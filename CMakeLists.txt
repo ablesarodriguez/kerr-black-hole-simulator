@@ -34,3 +34,6 @@ add_custom_command(TARGET simulator POST_BUILD
 add_executable(physics_tests tests/physics_tests.cpp)
 enable_testing()
 add_test(NAME physics_tests COMMAND physics_tests)
+
+# Renderizador de referencia en CPU para comparar con el shader (tools/validate.py)
+add_executable(reference_render tools/reference_render.cpp)
