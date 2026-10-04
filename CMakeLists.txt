@@ -29,3 +29,8 @@ endif()
 # main.cpp carga el shader desde la carpeta del ejecutable
 add_custom_command(TARGET simulator POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/simulator/blackhole.fs $<TARGET_FILE_DIR:simulator>/blackhole.fs)
+
+# Pruebas numéricas de la física de Kerr (common/KerrPhysics.h)
+add_executable(physics_tests tests/physics_tests.cpp)
+enable_testing()
+add_test(NAME physics_tests COMMAND physics_tests)
