@@ -1,8 +1,16 @@
-# Binarios y salidas generadas
-*.exe
-*.o
-*.ppm
-*.pfm
+# Build output
 build/
 out/
+*.exe
+*.o
+*.obj
+
+# Renders written by the prototype and the tools
+*.ppm
+*.pfm
+*.f32
+*.npy
+
+# Editor and Python
+.vscode/
 __pycache__/
