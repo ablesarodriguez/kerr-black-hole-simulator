@@ -203,17 +203,3 @@ Frame time on an RTX 3060 with the default camera: 3.3 ms at 1000×800, 7.9 ms a
 
 MIT, see [LICENSE](LICENSE). The bundled raylib headers and library (`simulator/include`,
 `simulator/lib`) are © Ramon Santamaria and contributors, under the zlib license.
-
----
-
-## Resumen en español
-
-Simulador en tiempo real de un agujero negro de Kerr con disco de acreción. Cada píxel es un rayo
-de luz integrado en la GPU a través del espacio-tiempo curvo (geodésicas nulas en coordenadas
-Kerr-Schild, RK4), con un observador físico como cámara, disco de Page-Thorne desde la ISCO,
-corrimiento Doppler y gravitatorio exacto, y color de cuerpo negro a g·T. La física está escrita
-dos veces, en GLSL y en C++ de doble precisión, y se comprueba contra resultados analíticos
-(sombra de Bardeen, ISCO, conservación de H y L_z).
-
-Para compilar: `cmake -S . -B build` y `cmake --build build`. Para ejecutar: `./build/simulator`.
-Los controles y las limitaciones del modelo están en las secciones de arriba.
