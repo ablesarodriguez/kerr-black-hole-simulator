@@ -76,7 +76,7 @@ vec3 get_acceleration(vec3 p, vec3 v) {
     vec3 h = cross(p, v);
     float h2 = dot(h, h);
 
-    vec3 accel = -1.5 * h2 * p / (r2 * r2 * sqrt(r2));
+    vec3 accel = -3.0 * h2 * p / (r2 * r2 * sqrt(r2));
 
     if (useKerr) {
         const float spinA = 0.6;
