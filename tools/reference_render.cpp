@@ -1,8 +1,8 @@
-// Renderizador de referencia en CPU (doble precisión) con la misma física que simulator/blackhole.fs.
-// Escribe, para cada píxel, (g, radio del impacto en el disco, tipo: 0 sombra / 1 cielo / 2 disco)
-// en float32, igual que el modo de vista 3 del shader, para comparar los dos píxel a píxel.
+// CPU reference renderer (double precision) with the same physics as simulator/blackhole.fs.
+// For each pixel it writes (g, radius of the disk hit, type: 0 shadow / 1 sky / 2 disk) as float32,
+// like view mode 3 of the shader, so that the two can be compared pixel by pixel.
 //
-// Uso: reference_render W H camX camY camZ spin salida.f32 [targetX targetY targetZ upX upY upZ] [escala_paso]
+// Usage: reference_render W H camX camY camZ spin out.f32 [targetX targetY targetZ upX upY upZ] [step_scale]
 #include <cstdio>
 #include <cstdlib>
 #include <vector>
@@ -13,7 +13,7 @@ static Vec3 toKS(Vec3 v) { return {v.z, v.x, v.y}; }
 
 int main(int argc, char** argv) {
     if (argc < 8) {
-        std::fprintf(stderr, "uso: %s W H camX camY camZ spin salida.f32 [target(3) up(3)] [escala]\n", argv[0]);
+        std::fprintf(stderr, "usage: %s W H camX camY camZ spin out.f32 [target(3) up(3)] [step_scale]\n", argv[0]);
         return 1;
     }
     int W = std::atoi(argv[1]), H = std::atoi(argv[2]);

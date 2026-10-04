@@ -21,7 +21,7 @@ def isco(a):
     return 3 + z2 - (1 if a >= 0 else -1) * math.sqrt(max((3 - z1) * (3 + z1 + 2 * z2), 0))
 
 def disk_flux(r, a):
-    """Page-Thorne, igual que diskFlux en common/KerrPhysics.h."""
+    """Page-Thorne, same as diskFlux in common/KerrPhysics.h."""
     rin = isco(a)
     if r <= rin:
         return 0.0
