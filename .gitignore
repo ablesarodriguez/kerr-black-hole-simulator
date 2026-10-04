@@ -1,0 +1,8 @@
+# Binarios y salidas generadas
+*.exe
+*.o
+*.ppm
+*.pfm
+build/
+out/
+__pycache__/
