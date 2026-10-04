@@ -1,4 +1,4 @@
-# Relativistic raytracer
+# Kerr black hole simulator
 
 A real-time simulator of a spinning (Kerr) black hole and its accretion disk. Every pixel is a light
 ray integrated through curved spacetime on the GPU: there is no pre-baked lensing texture and no
