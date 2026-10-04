@@ -1,0 +1,31 @@
+cmake_minimum_required(VERSION 3.16)
+project(relativistic_raytracer CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release)
+endif()
+
+# Prototipo en CPU (no necesita raylib)
+add_executable(prototype prototype/main.cpp)
+
+# Simulador en tiempo real (raylib + shader GLSL)
+add_executable(simulator simulator/main.cpp)
+if(WIN32 AND EXISTS ${CMAKE_SOURCE_DIR}/simulator/lib/libraylib.a)
+  # raylib 6.0 incluido en el repo (MinGW)
+  target_include_directories(simulator PRIVATE simulator/include)
+  target_link_libraries(simulator PRIVATE ${CMAKE_SOURCE_DIR}/simulator/lib/libraylib.a opengl32 gdi32 winmm)
+else()
+  find_package(raylib QUIET)
+  if(NOT raylib_FOUND)
+    include(FetchContent)
+    FetchContent_Declare(raylib GIT_REPOSITORY https://github.com/raysan5/raylib.git GIT_TAG 5.5)
+    set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+    FetchContent_MakeAvailable(raylib)
+  endif()
+  target_link_libraries(simulator PRIVATE raylib)
+endif()
+# main.cpp carga el shader desde la carpeta del ejecutable
+add_custom_command(TARGET simulator POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/simulator/blackhole.fs $<TARGET_FILE_DIR:simulator>/blackhole.fs)
