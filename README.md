@@ -1,5 +1,7 @@
 # Kerr black hole simulator
 
+[![CI](https://github.com/ablesarodriguez/kerr-black-hole-simulator/actions/workflows/ci.yml/badge.svg)](https://github.com/ablesarodriguez/kerr-black-hole-simulator/actions/workflows/ci.yml)
+
 A real-time simulator of a spinning (Kerr) black hole and its accretion disk. Every pixel is a light
 ray integrated through curved spacetime on the GPU: there is no pre-baked lensing texture and no
 "bend the ray a bit" approximation. The physics is implemented twice, in GLSL and in double-precision
